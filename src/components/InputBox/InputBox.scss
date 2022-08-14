@@ -1,0 +1,22 @@
+label {
+  font-size: 15px;
+  font-weight: medium;
+  color: #a1a4af;
+  margin-bottom: 25px;
+  input {
+    padding: 10px;
+    border: 1px solid #a1a4af;
+    color: #3e4fb0;
+    outline: none;
+    border-radius: 5px;
+    height: 52px;
+    margin: 5px 0;
+    font-size: 18px;
+    font-weight: 500;
+    &[type="checkbox"] {
+      height: 18px;
+      width: 18px;
+      margin-right: 15px;
+    }
+  }
+}
