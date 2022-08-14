@@ -35,7 +35,8 @@ const Authenticator = () => {
             }, {
                 name: 'mobile',
                 value: mobile,
-                label: 'Contact No.'
+                label: 'Contact No.',
+                type: 'number'
             },
             {
                 name: 'password',
