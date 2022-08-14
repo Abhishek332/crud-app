@@ -1,21 +1,21 @@
-@import "../../index.scss";
+@import '../../index.scss';
 
 label {
-  font-size: 13px;
-  font-weight: medium;
-  color: #a1a4af;
-  margin-bottom: 25px;
-  width: 90%;
-  @include flexCenter(start, start, column);
-  input {
-    padding: 10px;
-    border: 1px solid #a1a4af;
-    color: #3e4fb0;
-    border-radius: 5px;
-    height: 40px;
-    width: 100%;
-    margin: 5px 0;
-    font-size: 12px;
-    background-color: white;
-  }
+	font-size: 13px;
+	font-weight: medium;
+	color: #a1a4af;
+	margin-bottom: 18px;
+	width: 90%;
+	@include flexCenter(start, start, column);
+	input {
+		padding: 10px;
+		border: 1px solid #a1a4af;
+		color: #3e4fb0;
+		border-radius: 5px;
+		height: 40px;
+		width: 100%;
+		margin: 5px 0;
+		font-size: 12px;
+		background-color: white;
+	}
 }
