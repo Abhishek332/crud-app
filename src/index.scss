@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+$primary: #664de5;
+$secondary: #6a768e;
+$secondary_1: #8b97b1;
+$black: #151b28;
+$border: #f1f4f8;
+
+@mixin flexCenter($justifyItem, $alignItem, $direction) {
+  display: flex;
+  align-items: $alignItem;
+  justify-content: $justifyItem;
+  flex-direction: $direction;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  border: none;
+  outline: none;
+  color: $black;
+}
+
+.flex-col-center {
+  @include flexCenter(start, center, column);
+}

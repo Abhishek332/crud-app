@@ -1,5 +1,6 @@
-import { InputBox } from "../components";
+import { InputBox } from "../../components";
 import { useState } from "react";
+import "./Authenticator.scss";
 
 interface formState {
     [key: string]: string;
@@ -54,12 +55,15 @@ const Authenticator = () => {
 
 
     return (
-        <form onSubmit={handleSubmit} className="authenticator">
-            {
-                formFields.map((inputData, i) => <InputBox key={`form-input-${i}`} {...inputData} handleChange={handleChange} required />)
-            }
-            <button>Submit</button>
-        </form>
+        <div className="authenticator">
+            <form onSubmit={handleSubmit} className="authenticator">
+                {
+                    formFields.map((inputData, i) => <InputBox key={`form-input-${i}`} {...inputData} handleChange={handleChange} required />)
+                }
+                <button>Submit</button>
+            </form>
+
+        </div>
     )
 }
 

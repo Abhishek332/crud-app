@@ -1,0 +1,24 @@
+@import "../../index.scss";
+
+.authenticator {
+  form {
+    height: auto;
+    width: 450px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    @include flexCenter(center, center, column);
+    @media (max-width: 450px) {
+      width: 100%;
+    }
+    button {
+      height: 40px;
+      width: 90%;
+      background-color: $primary;
+      font-weight: medium;
+      color: white;
+      border-radius: 5px;
+    }
+  }
+}
