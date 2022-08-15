@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/customReduxHooks";
 import { getStates, getSuburb } from "./countrySlice";
 import { getVenues } from "./venuesSlice";
+import { Table } from "../../components";
 
 const Venues = () => {
     const [selectedValue, setSelectedValue] = useState({
@@ -25,14 +26,7 @@ const Venues = () => {
         dispatch(getStates());
     }, [dispatch])
 
-    useEffect(() => {
-        console.log('Selected Value', selectedValue);
-    }, [selectedValue]);
-
-    useEffect(() => {
-        console.log('Venues', venues);
-    }, [venues]);
-
+    const venuesData = venues?.data.map((venue: any) => { return { id: venue.id, name: venue.name, category: venue.category } });
 
     return (
         (status === 'pending' || venuesStatus === 'pending')
@@ -55,7 +49,7 @@ const Venues = () => {
                 <div className="venues-container">
                     {
                         venues
-                            ? <div>Abhishek</div>
+                            ? <Table data={venuesData} />
                             : <p>Select State and Suburb to see venues</p>
                     }
                 </div>

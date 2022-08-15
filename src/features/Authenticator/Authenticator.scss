@@ -1,40 +1,44 @@
-@import '../../index.scss';
+@import "../../index.scss";
 
 .authenticator {
-	height: 100vh;
-	width: 100vw;
-	@include flexCenter(start, center, column);
-	.spinner {
-		height: 100vh;
-		width: 100vw;
-		position: absolute;
-		z-index: 10;
-		@include flexCenter(center, center, row);
-	}
-	h1 {
-		color: $primary;
-		margin-top: 40px;
-	}
-	form {
-		margin: 15px 0;
-		height: auto;
-		width: 450px;
-		@include flexCenter(center, center, column);
-		@media (max-width: 450px) {
-			width: 100%;
-		}
-		button {
-			height: 40px;
-			width: 90%;
-			background-color: $primary;
-			font-weight: medium;
-			color: white;
-			border-radius: 5px;
-		}
-	}
-	p span {
-		font-weight: 600;
-		color: $primary;
-		cursor: pointer;
-	}
+  height: 100vh;
+  width: 100vw;
+  @include flexCenter(start, center, column);
+  .spinner {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 10;
+    @include flexCenter(center, center, row);
+    img {
+      height: 120px;
+      aspect-ratio: 1/1;
+    }
+  }
+  h1 {
+    color: $primary;
+    margin-top: 40px;
+  }
+  form {
+    margin: 15px 0;
+    height: auto;
+    width: 450px;
+    @include flexCenter(center, center, column);
+    @media (max-width: 450px) {
+      width: 100%;
+    }
+    button {
+      height: 40px;
+      width: 90%;
+      background-color: $primary;
+      font-weight: medium;
+      color: white;
+      border-radius: 5px;
+    }
+  }
+  p span {
+    font-weight: 600;
+    color: $primary;
+    cursor: pointer;
+  }
 }
