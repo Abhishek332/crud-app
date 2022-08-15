@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../features/Authenticator/authenticatorSlice";
+import gamesReducer from "../features/Games/gamesSlice";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
+    games: gamesReducer,
   },
 });
 

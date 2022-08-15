@@ -25,7 +25,6 @@ export const auth = createAsyncThunk(
 interface UserState {
   data: any;
   status: "idle" | "pending" | "succeeded" | "failed";
-  message: string | null;
 }
 
 const initialState = {
