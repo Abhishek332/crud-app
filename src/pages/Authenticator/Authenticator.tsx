@@ -1,20 +1,22 @@
 import { InputBox } from "../../components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Authenticator.scss";
-
-interface formState {
-    [key: string]: string;
-}
+import { useAppDispatch, useAppSelector } from "../../redux/customReduxHooks";
+import { auth } from "../../redux/features/authenticatorSlice";
+import { useNavigate } from "react-router-dom";
 
 const Authenticator = () => {
-    const [state, setState] = useState<formState>({
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: "",
-        mobile: "",
-        device_type: "0"
-    }),
+    const dispatch = useAppDispatch(),
+        navigate = useNavigate(),
+        user = useAppSelector(state => state.user),
+        [state, setState] = useState<formState>({
+            first_name: "",
+            last_name: "",
+            email: "",
+            password: "",
+            mobile: "",
+            device_type: "0"
+        }),
         [showSignIn, setShowSignIn] = useState<boolean>(false),
         { first_name, last_name, email, password, mobile } = state;
 
@@ -56,11 +58,26 @@ const Authenticator = () => {
     },
         handleSubmit = (e: any) => {
             e.preventDefault();
+            showSignIn
+                ? dispatch(auth({ purpose: 'login', obj: state }))
+                : dispatch(auth({ purpose: 'register', obj: state }));
         };
+
+    useEffect(() => {
+        switch (user.status) {
+            case 'succeeded': navigate('/games'); return;
+            case 'failed': alert(user.data.message);
+        }
+    }, [navigate, user]);
 
 
     return (
         <div className="authenticator">
+            {
+                user.status === 'pending' && <div className="spinner">
+                    <img src="spinner.gif" alt="" />
+                </div>
+            }
             <h1>
                 {showSignIn ? "SignIn" : "SignUp"}
             </h1>

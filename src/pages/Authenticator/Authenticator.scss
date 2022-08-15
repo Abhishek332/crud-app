@@ -4,6 +4,13 @@
 	height: 100vh;
 	width: 100vw;
 	@include flexCenter(start, center, column);
+	.spinner {
+		height: 100vh;
+		width: 100vw;
+		position: absolute;
+		z-index: 10;
+		@include flexCenter(center, center, row);
+	}
 	h1 {
 		color: $primary;
 		margin-top: 40px;
