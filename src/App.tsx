@@ -1,4 +1,4 @@
-import { Authenticator } from "./pages"
+import { Authenticator, Games } from "./features"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 const App = () => {
@@ -6,7 +6,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Authenticator />} />
-        <Route path="/games" element={<p>This is game page</p>} />
+        <Route path="/games" element={<Games/>} />
       </Routes>
     </Router>
   )

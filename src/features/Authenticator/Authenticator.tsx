@@ -1,9 +1,9 @@
-import { InputBox } from "../../components";
 import { useState, useEffect } from "react";
-import "./Authenticator.scss";
-import { useAppDispatch, useAppSelector } from "../../redux/customReduxHooks";
-import { auth } from "../../redux/features/authenticatorSlice";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../../redux/customReduxHooks";
+import { auth } from "./authenticatorSlice";
+import { InputBox } from "../../components";
+import "./Authenticator.scss";
 
 const Authenticator = () => {
     const dispatch = useAppDispatch(),
@@ -58,14 +58,23 @@ const Authenticator = () => {
     },
         handleSubmit = (e: any) => {
             e.preventDefault();
-            showSignIn
-                ? dispatch(auth({ purpose: 'login', obj: state }))
-                : dispatch(auth({ purpose: 'register', obj: state }));
+            dispatch(auth({
+                purpose: showSignIn ? 'login' : 'register',
+                obj: state
+            }));
         };
 
     useEffect(() => {
         switch (user.status) {
-            case 'succeeded': navigate('/games'); return;
+            case 'succeeded': {
+                if (user.data.authorization) {
+                    localStorage.setItem("userInfo", JSON.stringify(user.data));
+                    navigate('/games');
+                }
+                setShowSignIn(true);
+                alert(user.data.message);
+                return;
+            }
             case 'failed': alert(user.data.message);
         }
     }, [navigate, user]);
