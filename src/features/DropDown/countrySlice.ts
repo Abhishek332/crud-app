@@ -3,12 +3,26 @@ import { API } from "../../api";
 
 export const getStates = createAsyncThunk(
   "country/getStates",
-  async (__, { fulfillWithValue }) => {
+  async () => {
     try {
       const {
         data: { states },
       } = await API.get("/view_states?country_code=in");
-      return fulfillWithValue(states);
+      return states;
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+);
+
+export const getSuburb = createAsyncThunk(
+  "country/getSuburb",
+  async (state: string) => {
+    try {
+      const {
+        data: { suburb },
+      } = await API.get(`/view_suburbs?state=${state}`);
+      return suburb;
     } catch (error: any) {
       console.log(error);
     }
@@ -17,15 +31,17 @@ export const getStates = createAsyncThunk(
 
 interface Country_State {
   states: string[] | null;
+  suburb: string[] | null;
   status: "idle" | "pending" | "succeeded" | "failed";
 }
 
 const initialState = {
   states: null,
   status: "idle",
+  suburb: null
 } as Country_State;
 
-const userSlice = createSlice({
+const countrySlice = createSlice({
   name: "country",
   initialState,
   reducers: {},
@@ -35,14 +51,17 @@ const userSlice = createSlice({
     });
     builder.addCase(getStates.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.data = action.payload;
+      state.states = action.payload;
     });
-    builder.addCase(getStates.rejected, (state, action) => {
-      state.status = "failed";
-      state.data = { message: action.payload };
+    builder.addCase(getSuburb.pending, (state) => {
+      state.status = "pending";
+    });
+    builder.addCase(getSuburb.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.suburb = action.payload;
     });
   },
 });
 
-const userReducer = userSlice.reducer;
-export default userReducer;
+const countryReducer = countrySlice.reducer;
+export default countryReducer;
