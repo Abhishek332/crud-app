@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userReducer, gamesReducer, countryReducer } from "../features";
+import { userReducer, gamesReducer, countryReducer, venuesReducer } from "../features";
 
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     games: gamesReducer,
-    country: countryReducer
+    country: countryReducer,
+    venues: venuesReducer
   },
 });
 

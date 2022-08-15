@@ -1,0 +1,26 @@
+@import '../../index.scss';
+
+.page-container {
+	height: 100vh;
+	width: 100vw;
+	@include flexCenter(start, center, column);
+	.dropdown-container {
+		@include flexCenter(center, center, row);
+		flex-wrap: wrap;
+		margin: 30px 0;
+		select {
+			padding: 10px;
+			border: 1px solid #a1a4af;
+			color: #3e4fb0;
+			border-radius: 5px;
+			height: 40px;
+			width: 400px;
+			margin: 8px;
+			font-size: 12px;
+			background-color: white;
+			@media (max-width: 400px) {
+				width: 95%;
+			}
+		}
+	}
+}

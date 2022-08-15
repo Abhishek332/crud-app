@@ -1,4 +1,4 @@
-import { Authenticator, Games, DropDown } from "./features"
+import { Authenticator, Games, Venues } from "./features"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Authenticator />} />
         <Route path="/games" element={<Games />} />
-        <Route path='/dropdown' element={<DropDown />} />
+        <Route path='/venues' element={<Venues />} />
       </Routes>
     </Router>
   )
