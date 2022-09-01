@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# SignUp and Login implementation by using Redux Toolkit and public api.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+you can check project [here](https://squash-player.netlify.app/).
 
 ## Available Scripts
 
